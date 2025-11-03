@@ -134,7 +134,7 @@ const JobCard = ({
     //     if(dataSavedJobs!==undefined) setSaved(dataSavedJobs?.length > 0);
     // },[dataSavedJobs]);
     
-    return <Card>
+    return <Card className='flex flex-col'>
         <CardHeader>
             <CardTitle className="flex justify-between font-bold">
                 {job.title}
@@ -159,7 +159,7 @@ const JobCard = ({
             {job.description.substring(0,job.description.indexOf("."))+"..."}
         </CardContent>
         <CardFooter className='flex gap-2'>
-            <Link to={`/job/${job.id}`} className='flex-1'>
+            <Link to={`/jobpage/${job.id}`} className='flex-1'>
             <Button variant='secondary' className='w-full'>
                 More Details</Button></Link>
 
