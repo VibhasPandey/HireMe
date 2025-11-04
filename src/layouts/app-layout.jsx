@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Header from '../components/header'
+import { Heart } from 'lucide-react'
 
 const AppLayout = () => {
   return (
@@ -12,7 +13,8 @@ const AppLayout = () => {
           <Outlet/>
         </main>
         </div>
-        <div className='p-10 text-center bg-gray-800 mt-10'>Heartcoded by Vibhas ♡ </div>
+        
+        <div className=' p-10 text-center bg-gray-800 mt-10'>Heartcoded by Vibhas❤</div> 
     </div>
   )
 }
