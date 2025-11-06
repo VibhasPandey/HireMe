@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {Button} from "./components/ui/button"
-import viteLogo from '/vite.svg'
+import viteLogo from '/Logo.svg'
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import AppLayout from './layouts/app-layout'

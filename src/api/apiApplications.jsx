@@ -9,7 +9,7 @@ export async function applyToJobs(token,_, jobData){
       const {error: storageError}=await supabase.storage.from('resumes').upload(fileName,jobData.resume);
          
         if(storageError) {
-            console.error ("Error Uploading Resume:", error);
+            console.error ("Error Uploading Resume:", storageError);
             return null;
         }
 
@@ -50,4 +50,40 @@ export async function updateApplicationStatus(token, {job_id},status){
 
         return data;
         
+}
+
+export async function addNewJob(token, _,jobData){
+      const supabase =await supabaseClient(token);
+
+
+    
+        const {data,error} = await supabase
+        .from("jobs")
+        .insert([jobData])
+        .select();
+
+        if(error ) {
+            console.error ("Error Creating Job:", error);
+            return null;
+        }
+
+        return data;
+        
+}
+
+export async function getApplications(token, { user_id }) {
+  const supabase = await supabaseClient(token);
+  const { data, error } = await supabase
+ .from("applications")
+   
+ .select("*, job:jobs!applications_job_id_fkey(title, company:companies(name))")
+ .eq("candidate_id", user_id)
+ .not("job_id", "is", null);
+
+  if (error) {
+    console.error("Error fetching Applications:", error);
+    return null;
+  }
+
+  return data;
 }
